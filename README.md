@@ -43,3 +43,7 @@ npm run cap:ios
 ```
 
 Assurez-vous d'avoir les outils de développement Android/iOS installés pour lancer les builds mobiles.
+
+## Licence
+
+Ce projet est distribué sous la licence MIT.
