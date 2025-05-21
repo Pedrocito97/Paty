@@ -18,4 +18,28 @@ Run the development server:
 npm run dev
 ```
 
-A future update will integrate Capacitor for mobile builds (iOS and Android).
+### Capacitor Mobile Builds
+
+This project is configured to use Capacitor so you can build native iOS and Android apps.
+
+1. Build the web application:
+
+```bash
+npm run build
+```
+
+2. Sync the assets with Capacitor:
+
+```bash
+npm run cap:sync
+```
+
+3. Open the native project in Android Studio or Xcode:
+
+```bash
+npm run cap:android
+# or
+npm run cap:ios
+```
+
+Make sure you have the Android/iOS development tools installed to run the mobile builds.

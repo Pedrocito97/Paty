@@ -5,9 +5,10 @@ const Dashboard: React.FC = () => {
     <section>
       <h2>Mon Programme</h2>
       <p>Progression et programmes à afficher ici.</p>
-      {/* TODO: Show training and nutrition plans */}
+      <p>Vos plans d'entraînement et conseils nutrition seront disponibles prochainement.</p>
     </section>
   );
 };
 
 export default Dashboard;
+
