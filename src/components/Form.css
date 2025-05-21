@@ -1,0 +1,22 @@
+@import '../styles/global.css';
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.form-container input,
+.form-container button {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.form-container button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,35 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --text-color: #333;
+  --font-family-base: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-family-base);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  padding: 1rem;
+}
+
+.navbar a {
+  color: #fff;
+  margin-right: 1rem;
+  text-decoration: none;
+}
