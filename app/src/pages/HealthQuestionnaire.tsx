@@ -5,9 +5,20 @@ const HealthQuestionnaire: React.FC = () => {
     <section>
       <h2>Questionnaire Santé</h2>
       <p>Ce formulaire doit être complété lors de l'inscription.</p>
-      {/* TODO: Add form fields */}
+      <form>
+        <div>
+          <label htmlFor="age">Âge:</label>
+          <input id="age" type="number" min="0" />
+        </div>
+        <div>
+          <label htmlFor="medical">Antécédents médicaux:</label>
+          <textarea id="medical" rows={4} />
+        </div>
+        <button type="submit">Envoyer</button>
+      </form>
     </section>
   );
 };
 
 export default HealthQuestionnaire;
+
