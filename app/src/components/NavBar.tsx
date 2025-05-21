@@ -6,7 +6,7 @@ const NavBar: React.FC = () => (
     <ul>
       <li><Link to="/">Accueil</Link></li>
       <li><Link to="/subscribe">Souscription</Link></li>
-      <li><Link to="/dashboard">Dashboard</Link></li>
+      <li><Link to="/dashboard">Tableau de bord</Link></li>
     </ul>
   </nav>
 );
