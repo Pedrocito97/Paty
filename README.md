@@ -44,6 +44,17 @@ npm run cap:ios
 
 Assurez-vous d'avoir les outils de développement Android/iOS installés pour lancer les builds mobiles.
 
+
+### Tests
+
+Pour exécuter la suite de tests unitaires :
+
+```bash
+cd app
+npm test
+```
+
 ## Licence
 
 Ce projet est distribué sous la licence MIT.
+
