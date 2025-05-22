@@ -1,10 +1,20 @@
 import express from 'express';
 import cors from 'cors';
 import Stripe from 'stripe';
+import multer from 'multer';
+import { v2 as cloudinary } from 'cloudinary';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const upload = multer({ storage: multer.memoryStorage() });
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = new Stripe(stripeSecretKey, {
@@ -37,6 +47,24 @@ app.post('/create-checkout-session', async (req, res) => {
   } catch (err) {
     console.error('Stripe error', err);
     res.status(500).json({ error: 'Stripe error' });
+  }
+});
+
+app.post('/api/upload-video', upload.single('file'), async (req, res) => {
+  const { title, description } = req.body;
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
+  }
+
+  try {
+    const uploadResult = await cloudinary.uploader.upload(
+      `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`,
+      { resource_type: 'video' }
+    );
+    res.json({ url: uploadResult.secure_url, title, description });
+  } catch (err) {
+    console.error('Upload error', err);
+    res.status(500).json({ error: 'Upload failed' });
   }
 });
 
