@@ -37,6 +37,7 @@ cd server && npm install
 npm start
 ```
 
+
 ### Variables d'environnement CDN
 
 L'application peut envoyer des fichiers vers un CDN. Configurez les variables suivantes dans un fichier `.env` :
@@ -56,6 +57,16 @@ npm start
 ```
 
 Vous pouvez ensuite envoyer vos fichiers via une requête HTTP POST sur `http://localhost:4242/upload`.
+
+=======
+Pour l'upload de vidéos vers le CDN, définissez également dans `server/.env` les variables :
+
+```bash
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
 
 ### Builds mobiles Capacitor
 
