@@ -1,10 +1,30 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
 
 type Plan = 'basic' | 'premium' | 'annual';
 
 const SubscriptionPage: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<Plan>('premium');
+
+  const handleCheckout = async () => {
+    const stripe = await loadStripe('pk_test_placeholder');
+    try {
+      const response = await fetch('http://localhost:4242/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ plan: selectedPlan })
+      });
+      const data = await response.json();
+      if (data.id) {
+        await stripe?.redirectToCheckout({ sessionId: data.id });
+      }
+    } catch (err) {
+      console.error('Checkout error', err);
+    }
+  };
 
   const handleSelectPlan = (plan: Plan) => {
     setSelectedPlan(plan);
@@ -143,28 +163,7 @@ const SubscriptionPage: React.FC = () => {
           </p>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '400px', margin: '0 auto' }}>
-            <div className="form-floating">
-              <input type="text" id="cardNumber" placeholder=" " />
-              <label htmlFor="cardNumber">Numéro de carte</label>
-            </div>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-              <div className="form-floating">
-                <input type="text" id="expiration" placeholder=" " />
-                <label htmlFor="expiration">Date d'expiration</label>
-              </div>
-              <div className="form-floating">
-                <input type="text" id="cvc" placeholder=" " />
-                <label htmlFor="cvc">CVC</label>
-              </div>
-            </div>
-            
-            <div className="form-floating">
-              <input type="text" id="name" placeholder=" " />
-              <label htmlFor="name">Nom sur la carte</label>
-            </div>
-            
-            <button className="btn btn-lg">Payer et s'abonner</button>
+            <button className="btn btn-lg" onClick={handleCheckout}>Payer et s'abonner</button>
           </div>
           
           <div style={{ marginTop: '2rem', fontSize: '0.9rem', color: 'var(--text-light)', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}>
