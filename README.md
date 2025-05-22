@@ -27,6 +27,14 @@ cd server && npm install
 npm start
 ```
 
+Pour l'upload de vidéos vers le CDN, définissez également dans `server/.env` les variables :
+
+```bash
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
 ### Builds mobiles Capacitor
 
 Ce projet est configuré avec Capacitor pour générer les applications iOS et Android natives.
