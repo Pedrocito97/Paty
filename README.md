@@ -18,6 +18,15 @@ Lancez le serveur de développement :
 npm run dev
 ```
 
+### Démarrer le serveur Stripe
+
+Un petit serveur Express est fourni pour la création des sessions de paiement. Configurez votre clé secrète Stripe dans la variable `STRIPE_SECRET_KEY` puis lancez :
+
+```bash
+cd server && npm install
+npm start
+```
+
 ### Builds mobiles Capacitor
 
 Ce projet est configuré avec Capacitor pour générer les applications iOS et Android natives.
