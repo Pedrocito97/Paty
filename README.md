@@ -18,6 +18,16 @@ Lancez le serveur de développement :
 npm run dev
 ```
 
+### Démarrer la page d'administration
+
+Une interface d'administration est disponible pour gérer le contenu de l'application.
+Depuis le dossier `app`, lancez le serveur local et accédez ensuite à `http://localhost:5173/admin` :
+
+```bash
+cd app
+npm run dev
+```
+
 ### Démarrer le serveur Stripe
 
 Un petit serveur Express est fourni pour la création des sessions de paiement. Configurez votre clé secrète Stripe dans la variable `STRIPE_SECRET_KEY` puis lancez :
@@ -27,6 +37,28 @@ cd server && npm install
 npm start
 ```
 
+
+### Variables d'environnement CDN
+
+L'application peut envoyer des fichiers vers un CDN. Configurez les variables suivantes dans un fichier `.env` :
+
+- `CDN_BASE_URL` : URL du service CDN
+- `CDN_API_KEY` : clé d'authentification
+
+Ces valeurs seront utilisées par le serveur lors des opérations d'upload.
+
+### Lancer l'endpoint d'upload
+
+Un endpoint `/upload` est exposé par le serveur pour transférer des fichiers vers le CDN. Après avoir défini les variables d'environnement ci-dessus :
+
+```bash
+cd server
+npm start
+```
+
+Vous pouvez ensuite envoyer vos fichiers via une requête HTTP POST sur `http://localhost:4242/upload`.
+
+=======
 Pour l'upload de vidéos vers le CDN, définissez également dans `server/.env` les variables :
 
 ```bash
@@ -34,6 +66,7 @@ CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 ```
+
 
 ### Builds mobiles Capacitor
 
