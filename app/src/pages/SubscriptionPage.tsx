@@ -8,7 +8,7 @@ const SubscriptionPage: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<Plan>('premium');
 
   const handleCheckout = async () => {
-    const stripe = await loadStripe('pk_test_placeholder');
+    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
     try {
       const response = await fetch('http://localhost:4242/create-checkout-session', {
         method: 'POST',

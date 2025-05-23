@@ -22,9 +22,9 @@ const stripe = new Stripe(stripeSecretKey, {
 });
 
 const PRICE_IDS = {
-  basic: 'price_basic', // TODO: replace with real Stripe price ID
-  premium: 'price_premium',
-  annual: 'price_annual'
+  basic: process.env.STRIPE_BASIC_PRICE_ID,
+  premium: process.env.STRIPE_PREMIUM_PRICE_ID,
+  annual: process.env.STRIPE_ANNUAL_PRICE_ID
 };
 
 app.post('/create-checkout-session', async (req, res) => {

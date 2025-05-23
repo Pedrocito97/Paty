@@ -37,6 +37,23 @@ cd server && npm install
 npm start
 ```
 
+### Variables d'environnement Stripe
+
+Définissez les clés et identifiants de prix nécessaires dans `server/.env` :
+
+```bash
+STRIPE_SECRET_KEY=your_secret_key
+STRIPE_BASIC_PRICE_ID=price_for_basic
+STRIPE_PREMIUM_PRICE_ID=price_for_premium
+STRIPE_ANNUAL_PRICE_ID=price_for_annual
+```
+
+Pour le client React, créez également un fichier `app/.env` avec :
+
+```bash
+VITE_STRIPE_PUBLIC_KEY=pk_test_your_public_key
+```
+
 
 ### Variables d'environnement CDN
 
