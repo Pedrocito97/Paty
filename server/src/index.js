@@ -40,8 +40,10 @@ app.post('/create-checkout-session', async (req, res) => {
       line_items: [
         { price: priceId, quantity: 1 }
       ],
-      success_url: 'http://localhost:5173/dashboard?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'http://localhost:5173/subscribe'
+      success_url: process.env.SUCCESS_URL ||
+        `${process.env.CLIENT_BASE_URL || 'http://localhost:5173'}/dashboard?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: process.env.CANCEL_URL ||
+        `${process.env.CLIENT_BASE_URL || 'http://localhost:5173'}/subscribe`
     });
     res.json({ id: session.id });
   } catch (err) {

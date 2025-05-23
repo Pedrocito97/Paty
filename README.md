@@ -39,13 +39,17 @@ npm start
 
 ### Variables d'environnement Stripe
 
-Copiez d'abord `server/.env.example` vers `server/.env` puis définissez les clés et identifiants de prix :
+
 
 ```bash
 STRIPE_SECRET_KEY=your_secret_key
 STRIPE_BASIC_PRICE_ID=price_for_basic
 STRIPE_PREMIUM_PRICE_ID=price_for_premium
 STRIPE_ANNUAL_PRICE_ID=price_for_annual
+SUCCESS_URL=http://localhost:5173/dashboard?session_id={CHECKOUT_SESSION_ID}
+CANCEL_URL=http://localhost:5173/subscribe
+# facultatif : utiliser CLIENT_BASE_URL pour dériver les deux URL
+CLIENT_BASE_URL=http://localhost:5173
 ```
 
 Vous pouvez aussi personnaliser le port du serveur avec la variable optionnelle `PORT`.
