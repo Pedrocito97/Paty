@@ -39,7 +39,7 @@ npm start
 
 ### Variables d'environnement Stripe
 
-Définissez les clés et identifiants de prix nécessaires dans `server/.env` :
+Copiez d'abord `server/.env.example` vers `server/.env` puis définissez les clés et identifiants de prix :
 
 ```bash
 STRIPE_SECRET_KEY=your_secret_key
@@ -47,6 +47,8 @@ STRIPE_BASIC_PRICE_ID=price_for_basic
 STRIPE_PREMIUM_PRICE_ID=price_for_premium
 STRIPE_ANNUAL_PRICE_ID=price_for_annual
 ```
+
+Vous pouvez aussi personnaliser le port du serveur avec la variable optionnelle `PORT`.
 
 Pour le client React, créez également un fichier `app/.env` avec :
 
@@ -83,6 +85,8 @@ CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 ```
+
+Ces variables sont également présentes dans `server/.env.example`.
 
 
 ### Builds mobiles Capacitor
