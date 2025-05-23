@@ -6,22 +6,24 @@ Ce dépôt contient une configuration minimale de React + Vite pour le projet iP
 
 ## Bien démarrer
 
-Installez les dépendances (nécessite un accès réseau) :
+Installez les dépendances du client et du serveur (nécessite un accès réseau) :
 
 ```bash
-npm install
+cd app && npm install
+cd ../server && npm install
 ```
 
-Lancez le serveur de développement :
+Lancez le serveur de développement pour React :
 
 ```bash
+cd app
 npm run dev
 ```
 
 ### Démarrer la page d'administration
 
 Une interface d'administration est disponible pour gérer le contenu de l'application.
-Depuis le dossier `app`, lancez le serveur local et accédez ensuite à `http://localhost:5173/admin` :
+Depuis le dossier `app`, lancez le serveur local et accédez ensuite à `http://localhost:3000/admin` :
 
 ```bash
 cd app
@@ -46,10 +48,10 @@ STRIPE_SECRET_KEY=your_secret_key
 STRIPE_BASIC_PRICE_ID=price_for_basic
 STRIPE_PREMIUM_PRICE_ID=price_for_premium
 STRIPE_ANNUAL_PRICE_ID=price_for_annual
-SUCCESS_URL=http://localhost:5173/dashboard?session_id={CHECKOUT_SESSION_ID}
-CANCEL_URL=http://localhost:5173/subscribe
+SUCCESS_URL=http://localhost:3000/dashboard?session_id={CHECKOUT_SESSION_ID}
+CANCEL_URL=http://localhost:3000/subscribe
 # facultatif : utiliser CLIENT_BASE_URL pour dériver les deux URL
-CLIENT_BASE_URL=http://localhost:5173
+CLIENT_BASE_URL=http://localhost:3000
 ```
 
 Vous pouvez aussi personnaliser le port du serveur avec la variable optionnelle `PORT`.
@@ -72,16 +74,14 @@ Ces valeurs seront utilisées par le serveur lors des opérations d'upload.
 
 ### Lancer l'endpoint d'upload
 
-Un endpoint `/upload` est exposé par le serveur pour transférer des fichiers vers le CDN. Après avoir défini les variables d'environnement ci-dessus :
+Un endpoint `/api/upload-video` est exposé par le serveur pour transférer des fichiers vers le CDN. Après avoir défini les variables d'environnement ci-dessus :
 
 ```bash
 cd server
 npm start
 ```
 
-Vous pouvez ensuite envoyer vos fichiers via une requête HTTP POST sur `http://localhost:4242/upload`.
-
-=======
+Vous pouvez ensuite envoyer vos fichiers via une requête HTTP POST sur `http://localhost:4242/api/upload-video`.
 Pour l'upload de vidéos vers le CDN, définissez également dans `server/.env` les variables :
 
 ```bash
@@ -91,6 +91,14 @@ CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 Ces variables sont également présentes dans `server/.env.example`.
+
+Copiez ce fichier en `server/.env` puis lancez les deux serveurs :
+
+```bash
+cd server && npm start
+# dans un autre terminal
+cd ../app && npm run dev
+```
 
 
 ### Builds mobiles Capacitor
