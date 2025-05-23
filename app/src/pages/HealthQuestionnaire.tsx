@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import { Level, LEVEL_LABELS } from '../context/Level';
 
 const HealthQuestionnaire: React.FC = () => {
+  const auth = useContext(AuthContext);
+  const [userLevel, setUserLevel] = useState<Level>(auth?.level ?? Level.LEVEL1);
+
+  if (!auth) return null;
+
   return (
     <main className="container">
       <h1>Questionnaire de Santé</h1>
@@ -22,6 +29,23 @@ const HealthQuestionnaire: React.FC = () => {
           <div className="form-group">
             <label htmlFor="weight">Poids (kg):</label>
             <input id="weight" type="number" min="30" max="300" placeholder="Votre poids en kg" required />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="level">Votre niveau:</label>
+            <select
+              id="level"
+              value={userLevel}
+              onChange={e => {
+                const lvl = e.target.value as Level;
+                setUserLevel(lvl);
+                auth.setLevel(lvl);
+              }}
+            >
+              {Object.values(Level).map(l => (
+                <option key={l} value={l}>{LEVEL_LABELS[l]}</option>
+              ))}
+            </select>
           </div>
           
           <div className="form-group">

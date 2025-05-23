@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { LEVEL_LABELS } from '../context/Level';
 
 const Dashboard: React.FC = () => {
+  const auth = useContext(AuthContext);
+  if (!auth) return null;
+
   return (
     <main className="container">
       <h1 className="text-gradient">Mon tableau de bord</h1>
+      <p style={{ marginBottom: '1rem' }}>Niveau: {LEVEL_LABELS[auth.level]}</p>
       
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', marginBottom: '2rem' }}>
         <div style={{ flex: '1 1 300px', background: 'white', borderRadius: '1rem', padding: '1.5rem', boxShadow: 'var(--shadow-md)' }}>
