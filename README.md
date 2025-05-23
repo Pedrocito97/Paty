@@ -117,7 +117,15 @@ npm run build
 npm run cap:sync
 ```
 
-3. Ouvrez le projet natif dans Android Studio ou Xcode :
+3. Ajoutez la plateforme Android ou iOS si ce n'est pas déjà fait :
+
+```bash
+npx cap add android
+# et/ou
+npx cap add ios
+```
+
+4. Ouvrez ensuite le projet natif dans Android Studio ou Xcode :
 
 ```bash
 npm run cap:android
@@ -126,6 +134,7 @@ npm run cap:ios
 ```
 
 Assurez-vous d'avoir les outils de développement Android/iOS installés pour lancer les builds mobiles.
+Pour profiter d'une expérience PWA installable de manière autonome, prévoyez également un manifest web et un service worker.
 
 ## Licence
 
