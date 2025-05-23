@@ -39,7 +39,7 @@ npm start
 
 ### Variables d'environnement Stripe
 
-Définissez les clés et identifiants de prix nécessaires dans `server/.env` (un fichier `server/.env.example` est fourni) :
+
 
 ```bash
 STRIPE_SECRET_KEY=your_secret_key
@@ -51,6 +51,8 @@ CANCEL_URL=http://localhost:5173/subscribe
 # facultatif : utiliser CLIENT_BASE_URL pour dériver les deux URL
 CLIENT_BASE_URL=http://localhost:5173
 ```
+
+Vous pouvez aussi personnaliser le port du serveur avec la variable optionnelle `PORT`.
 
 Pour le client React, créez également un fichier `app/.env` avec :
 
@@ -87,6 +89,8 @@ CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 ```
+
+Ces variables sont également présentes dans `server/.env.example`.
 
 
 ### Builds mobiles Capacitor
